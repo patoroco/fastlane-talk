@@ -1,0 +1,88 @@
+fastlane_version "1.41.1"
+
+default_platform :ios
+
+platform :ios do
+  desc "Create app on iTunes Connect"
+  lane :create_app do
+    # be carefull with produce action, because apps created can't be deleted
+    # from iTunes Connect (thanks Apple)
+    # https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/TransferringAndDeletingApps.html
+
+    produce(
+      app_identifier: 'me.maroto.codemotion20152',
+      app_name: 'prueba codemotion',
+      language: 'Spanish',
+      app_version: '1.0',
+      sku: 'CODE20155', # if SKU is not specified, it will use a random one
+    )
+  end
+
+  desc "Update certificates and use it on provisioning profiles"
+  lane :update_certs do
+    cert
+    sigh(force: true)
+  end
+
+
+  desc "Enable push if is needed"
+  lane :enable_push do
+    pem
+    sigh(force:true)
+  end
+
+  desc "Create an ipa with Debug configuration"
+  lane :ipa_debug do
+    gym(
+      configuration: 'Debug',
+      output_name: 'codemotion-debug.ipa'
+    )
+  end
+
+  desc "Create an ipa with Release configuration"
+  lane :ipa_release do
+    gym(
+      configuration: 'Release',
+      output_name: 'codemotion-release.ipa'
+    )
+  end
+
+  lane :generate_snapshots do
+    snapshot(
+      clear_previous_screenshots: true,
+    )
+  end
+
+
+  #########
+  # TESTS #
+  #########
+
+  desc "Runs test with xctest"
+  lane :xctest do
+    xctest(destination: "name=iPhone 5s")
+  end
+
+  desc "Runs test with scan"
+  lane :scan do
+    scan(
+      scheme: 'codemotion2015',
+      device: 'iPhone 6'
+    )
+  end
+
+
+  ########
+  # MISC #
+  ########
+
+  desc "Dummy lane which says hello"
+  lane :say_hello do
+    say 'hello'
+  end
+
+  desc "Perform swiftlint"
+  lane :lint do
+    swiftlint
+  end
+end

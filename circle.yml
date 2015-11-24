@@ -1,3 +1,18 @@
 machine:
-    xcode:
-        version: "7.1"
+  xcode:
+    version: "7.1"
+
+dependencies:
+  pre:
+    - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+  post:
+    - fastlane enable_crash_reporting
+
+test:
+  override:
+    - bundle exec fastlane xctest
+
+teardown:
+  pre:
+    - mv -v /tmp/sentry_* $CIRCLE_ARTIFACTS || true
+    - mv -v fastlane/snapshots/* $CIRCLE_ARTIFACTS || true

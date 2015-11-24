@@ -1,0 +1,9 @@
+# http://szulctomasz.com/integrating-travis-ci-with-swift-project/
+
+osx_image: xcode7.1
+language: objective-c
+
+before_install:
+    - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+
+script: bundle exec fastlane xctest

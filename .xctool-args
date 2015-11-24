@@ -1,0 +1,7 @@
+[
+  "-project", "codemotion2015.xcodeproj",
+  "-scheme", "codemotion2015",
+  "-configuration", "Debug",
+  "-sdk", "iphonesimulator",
+  "-arch", "i386"
+]
