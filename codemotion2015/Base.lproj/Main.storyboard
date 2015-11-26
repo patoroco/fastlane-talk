@@ -31,9 +31,6 @@
                             <constraint firstItem="MPZ-hR-lpZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yJF-4p-Ly4"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="mainButton" destination="MPZ-hR-lpZ" id="UqE-ba-9eR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
