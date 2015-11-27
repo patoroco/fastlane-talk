@@ -612,6 +612,14 @@ output_directory "./fastlane/screenshots"
 ---
 
 
+![inline 30%](images/scan.png)
+
+
+---
+
+
+![](images/prueba-gif.png)
+
 
 
 
