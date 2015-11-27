@@ -62,7 +62,7 @@ Jorge Maroto García
 ---
 
 
-![100%](images/spaceship.png)
+![inline 100%](images/spaceship.png)
 
 ^ fastlane en un principio se creó para interactuar con iTunes Connect usando técnicas de scrapping.
 
