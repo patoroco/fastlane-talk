@@ -128,9 +128,9 @@ Jorge Maroto García
 ---
 
 
-### _Install_
+### *Install*
 
-#[fit]_`gem install fastlane`_
+#[fit]*`gem install fastlane`*
 
 ![102%](gifs/gem-install-fastlane.gif)
 
@@ -210,9 +210,9 @@ end
 
 ![83%](images/actions-iterm.png)
 
-#[fit] **actions**
+# actions
 
-`fastlane actions`
+#[fit] `fastlane actions`
 
 ^ Ejecutando fastlane actions, veremos un listado de las acciones que hay disponibles
 
@@ -224,11 +224,15 @@ end
 ---
 
 
-# Total 120 actions <sub>(27/11/2015)</sub>
+# Total 120 actions*
 
-### https://github.com/fastlane/fastlane/tree/master/lib/fastlane/actions
+- https://github.com/fastlane/fastlane/blob/master/docs/Actions.md
 
-### https://github.com/fastlane/fastlane/blob/master/docs/Actions.md
+- https://github.com/fastlane/fastlane/tree/master/lib/fastlane/actions
+
+--
+--
+<sub>* last visit 27/11/2015</sub>
 
 
 ^ A día de hoy, hay 120 acciones publicadas, y si recordamos al hacer el fastlane init, nos ha creado una carpeta actions, donde podremos meter las acciones particulares de nuestro proyecto.
@@ -241,9 +245,9 @@ end
 ---
 
 
-# Example _crashlytics_
+#[fit] Example: crashlytics
 
-`fastlane action crashlytics`
+#[fit] `fastlane action crashlytics`
 
 ![](images/fastlane_action_crashlytics.png)
 
@@ -346,7 +350,7 @@ end
 
 ---
 
-![inline](images/produce.png)
+![inline 25%](images/produce.png)
 
 ^ empecemos creando la app en iTunes Connect
 
@@ -361,14 +365,14 @@ end
 ---
 
 
-![125%](images/produce-create-repeated.png)
+![fit](images/produce-create-repeated.png)
 
 ^ podríamos intentar crearlo con variables de entorno también. Se ve que no deja
 
 
 ---
 
-![inline fit](images/produce-itunes-connect-1.png)
+![fit](images/produce-itunes-connect-1.png)
 
 ^ si entramos a itunes connect, veremos la app recién creada
 
@@ -376,14 +380,14 @@ end
 ---
 
 
-![inline fit](images/produce-itunes-connect-2.png)
+![fit](images/produce-itunes-connect-2.png)
 
 ^ y esto dentro, con el sku generado para este bundle
 
 
 ---
 
-![inline fit](images/produce-enable-services-help.png)
+![fit](images/produce-enable-services-help.png)
 
 ^ produce tiene otras acciones, como activar o desactivar servicios 
 
@@ -391,13 +395,13 @@ end
 ---
 
 
-![inline](images/developer-center-entitlements.png)
+![fit](images/developer-center-entitlements.png)
 
 
 ---
 
 
-![inline fit](images/produce-actions-help.png)
+![93%](images/produce-actions-help.png)
 
 ^ produce se puede utilizar también mediante una acción
 
@@ -429,9 +433,9 @@ end
 
 ---
 
-![inline](images/sigh.png)
-![inline](images/cert.png)
-![inline](images/pem.png)
+![inline 25%](images/sigh.png)
+![inline 25%](images/cert.png)
+![inline 25%](images/pem.png)
 
 ^ estas tres utilidades son para manejar los provisionings, actualizar los certificados, o generar los certificados de push de forma automática.
 
@@ -468,7 +472,7 @@ end
 ---
 
 
-![inline](images/gym.png)
+![inline 25%](images/gym.png)
 
 ---
 
@@ -514,7 +518,7 @@ output_directory "./fastlane/builds"
 ---
 
 
-![inline](images/snapshot.png)
+![inline 25%](images/snapshot.png)
 
 
 ---
@@ -662,9 +666,13 @@ class codemotion2015UITests: XCTestCase {
 ---
 
 
-![inline 30%](images/frameit.png)
+![inline 25%](images/frameit.png)
 
-### `$ frameit`
+---
+
+`$ frameit`
+
+--
 
 <sub>https://developer.apple.com/app-store/marketing/guidelines</sub>
 
@@ -672,17 +680,38 @@ class codemotion2015UITests: XCTestCase {
 
 ---
 
-![inline](images/iPhone6Plus-01Main_framed.png)
+#[fit] Main window->English->iPhone 6 Plus
+![inline fit](images/iPhone6Plus-01Main_framed.png)
 
 ---
 
+#[fit] Second window->Spanish->iPhone 5
 ![inline](images/iPhone5-02Language_framed.png)
 
 ---
 
+![fit](images/frameit-after.png)
 
-![inline 30%](images/scan.png)
+---
 
+
+![inline 25%](images/scan.png)
+
+---
+# Fastfile
+
+```ruby
+
+ desc "Runs test with scan"
+ lane :scan do
+   scan(
+     scheme: 'codemotion2015',
+     device: 'iPhone 6'
+   )
+ end
+
+
+```
 
 ---
 
@@ -695,7 +724,7 @@ class codemotion2015UITests: XCTestCase {
 ---
 
 
-![inline 30%](images/deliver.png)
+![inline 25%](images/deliver.png)
 
 
 ---
@@ -721,7 +750,7 @@ class codemotion2015UITests: XCTestCase {
 ---
 
 
-![inline](images/pilot.png)
+![inline 75%](images/pilot.png)
 
 ---
 
@@ -740,7 +769,7 @@ class codemotion2015UITests: XCTestCase {
 
 --- 
 
-![inline](images/boarding.png)
+![inline 45%](images/boarding.png)
 
 ^ crea una web para que los usuarios se subscriban para el test. Aún no la he usado por cómo usamos el testing internamente.
 
@@ -752,14 +781,15 @@ class codemotion2015UITests: XCTestCase {
 
 ---
 
-![fit](gifs/BoardingSetup.gif)
+![110%](gifs/BoardingSetup.gif)
 
 ^ este gif que tiene en el repo del proyecto explica cómo funciona
 
 
 ---
 
-![inline](images/supply.png)
+![inline 25%](images/supply.png)
+![inline fit](images/android.png)
 
 ^ para android. No lo he usado aún
 
@@ -768,18 +798,26 @@ class codemotion2015UITests: XCTestCase {
 
 # Links
 
-- https://fastlane.tools/
-- https://github.com/fastlane/***
-- https://github.com/patoroco/codemotion2015
+- fastlane.tools/
+- github.com/fastlane/***
+
+--
+
+- github.com/fastlane/fastlane/blob/master/docs/Actions.md
 
 
 ---
 
-#[fit]Thanks
+![right 126%](http://media.tumblr.com/tumblr_lnm1g25WsB1qdq5u6.gif)
 
---
+
+#[fit]Thanks!
+
 --
 
 Jorge Maroto García
-*@patoroco*
-![inline 25%](images/logotkt.png)
+_@patoroco_
+
+--
+
+#[fit] github.com/patoroco/codemotion2015
