@@ -24,12 +24,16 @@ platform :ios do
     sigh(force: true)
   end
 
-
   desc "Enable push if is needed"
   lane :enable_push do
     pem
     sigh(force:true)
   end
+
+
+  #########
+  # BUILD #
+  #########
 
   desc "Create an ipa with Debug configuration"
   lane :ipa_debug do
@@ -46,6 +50,11 @@ platform :ios do
       output_name: 'codemotion-release.ipa'
     )
   end
+
+
+  ##########
+  # IMAGES #
+  ##########
 
   lane :generate_snapshots do
     snapshot(
