@@ -593,6 +593,24 @@ output_directory "./fastlane/screenshots"
 ---
 
 
+![inline 30%](images/frameit.png)
+
+### `$ frameit`
+
+<sub>https://developer.apple.com/app-store/marketing/guidelines</sub>
+
+^ hay que bajarse las plantillas
+
+---
+
+![inline](images/iPhone6Plus-01Main_framed.png)
+
+---
+
+![inline](images/iPhone5-02Language_framed.png)
+
+---
+
 
 
 
