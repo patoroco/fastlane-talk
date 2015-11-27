@@ -55,3 +55,7 @@ fastlane/report.xml
 fastlane/logs
 fastlane/builds
 fastlane/test_output
+
+
+
+fastlane-boxoffice

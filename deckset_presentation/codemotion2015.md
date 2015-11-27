@@ -519,29 +519,67 @@ output_directory "./fastlane/builds"
 
 ---
 
+# SnapshotHelper.swift
 
 ```swift
-
+import Foundation
 import XCTest
 
-class codemotion2015UITests: XCTestCase {
-        
-    override func setUp() {
-        super.setUp()
-        let app = XCUIApplication()
-        setLanguage(app)
-        app.launch()
+var deviceLanguage = ""
+
+func setLanguage(app: XCUIApplication)
+{
+    Snapshot.setLanguage(app)
+}
+
+func snapshot(name: String, waitForLoadingIndicator: Bool = false)
+{
+    Snapshot.snapshot(name, waitForLoadingIndicator: waitForLoadingIndicator)
+}
+
+
+
+@objc class Snapshot: NSObject
+{
+    class func setLanguage(app: XCUIApplication)
+    {
+        let path = "/tmp/language.txt"
+
+        do {
+            let locale = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
+            deviceLanguage = locale.substringToIndex(locale.startIndex.advancedBy(2, limit:locale.endIndex))
+            app.launchArguments += ["-AppleLanguages", "(\(deviceLanguage))", "-AppleLocale", "\"\(locale)\"","-ui_testing"]
+        } catch {
+            print("Couldn't detect/set language...")
+        }
     }
     
-    func testSnapshot() {
-        snapshot("01Main")
-        XCUIApplication().buttons.elementBoundByIndex(0).tap()
-        snapshot("02Language")
+    class func snapshot(name: String, waitForLoadingIndicator: Bool = false)
+    {
+        if (waitForLoadingIndicator)
+        {
+            waitForLoadingIndicatorToDisappear()
+        }
+        print("snapshot: \(name)") // more information about this, check out https://github.com/krausefx/snapshot
+        
+        sleep(1) // Waiting for the animation to be finished (kind of)
+        XCUIDevice.sharedDevice().orientation = .Unknown
+    }
+    
+    class func waitForLoadingIndicatorToDisappear()
+    {
+        let query = XCUIApplication().statusBars.childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other)
+        
+        while (query.count > 4) {
+            sleep(1)
+            print("Number of Elements in Status Bar: \(query.count)... waiting for status bar to disappear")
+        }
     }
 }
 
 ```
 
+^ habría que incluir el fichero SwiftHelper.swift, que lo genera fastlane
 
 ---
 
@@ -573,6 +611,36 @@ output_directory "./fastlane/screenshots"
 
 ---
 
+# UITest
+
+```swift
+
+import XCTest
+
+class codemotion2015UITests: XCTestCase {
+        
+    override func setUp() {
+        super.setUp()
+        let app = XCUIApplication()
+        setLanguage(app)
+        app.launch()
+    }
+    
+    func testSnapshot() {
+        snapshot("01Main")
+        XCUIApplication().buttons.elementBoundByIndex(0).tap()
+        snapshot("02Language")
+    }
+}
+
+```
+
+^ después en nuestro lado, tenemos que crear un target de test de interfaz con el método snapshot se guardará una captura de pantalla
+
+
+---
+
+
 # Fastfile
 
 ```ruby
@@ -585,6 +653,7 @@ output_directory "./fastlane/screenshots"
 
 
 ```
+
 
 ---
 
@@ -618,9 +687,99 @@ output_directory "./fastlane/screenshots"
 ---
 
 
-![](images/prueba-gif.png)
+![fit](gifs/fastlane-scan.gif)
+
+^ scan ejecuta los tests
 
 
+---
 
 
+![inline 30%](images/deliver.png)
 
+
+---
+
+![fit](images/fastlane-crashlytics.png)
+
+^ lo enseñé al principio, y ahora vamos a verlo en un caso real
+
+^ pasar rápido estas imágenes pq se van a enseñar de verdad en sublime
+
+---
+
+![fit](images/fastlane-beta.png)
+
+
+---
+
+#[fit]Demo
+
+^ enseñar el caso de boxoffice con sus archivos
+
+
+---
+
+
+![inline](images/pilot.png)
+
+---
+
+# Features
+
+- upload build
+- list builds
+- manage test users
+
+^ para subir una build yo uso deliver tal cual
+
+
+---
+
+![fit](gifs/fastlane-pilot.gif)
+
+--- 
+
+![inline](images/boarding.png)
+
+^ crea una web para que los usuarios se subscriban para el test. Aún no la he usado por cómo usamos el testing internamente.
+
+---
+
+# How
+
+![inline](images/BoardingOverview.png)
+
+---
+
+![fit](gifs/BoardingSetup.gif)
+
+^ este gif que tiene en el repo del proyecto explica cómo funciona
+
+
+---
+
+![inline](images/supply.png)
+
+^ para android. No lo he usado aún
+
+
+---
+
+# Links
+
+- https://fastlane.tools/
+- https://github.com/fastlane/***
+- https://github.com/patoroco/codemotion2015
+
+
+---
+
+#[fit]Thanks
+
+--
+--
+
+Jorge Maroto García
+*@patoroco*
+![inline 25%](images/logotkt.png)
