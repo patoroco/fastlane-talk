@@ -90,7 +90,7 @@ platform :ios do
     say 'hello'
   end
 
-  desc "Perform swiftlint"
+  desc "Perform swiftlint (requires swiftlint)"
   lane :lint do
     swiftlint
   end
