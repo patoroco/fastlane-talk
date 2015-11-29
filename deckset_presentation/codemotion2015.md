@@ -7,29 +7,16 @@ Jorge Maroto García
 ![inline 25%](images/logotkt.png)
 
 
-^ Desde 2010 haciendo apps para iOS
-^ Casi 2 años en ticketea
-^ Actualmente el equipo de iOS es de 2 personas
-^ nueva app de iOS / android en react-native
-^ importancia de automatizar
-
-
 ---
 
 
 ![inline 100%](images/fastlane-logo.png)
 
 
-^ fastlane es una suite de utilidades escrita en ruby para ejecutar tareas.
-^ al principio se quería automatizar el manejo de info de itunes connect, pero poco a poco se han ido añadiendo más utilidades específicas.
-
-
 ---
 
 
 ![125%](images/anounce-fabric.png)
-
-^ esta charla se llamaba automatiza tu flow en ios, pero el 10 de noviembre se anunció que fastlane pasaba a ser parte de fabric
 
 
 ---
@@ -52,23 +39,11 @@ Jorge Maroto García
 
 ![inline 65%](images/fastlane-flows.png)
 
-^ el nombre de fastlane significa carril o vía rápida, y hace honor a su nombre, ya que permite crear flujos o 'lanes' a nuestro antojo.
-
-^ (explicar flujos)
-
-^ después explicaré cada brevemente cada herramienta
-
 
 ---
 
 
 ![inline 100%](images/spaceship.png)
-
-^ fastlane en un principio se creó para interactuar con iTunes Connect usando técnicas de scrapping.
-
-^ en mayo se añadió a la suite spaceship, una especie de apiclient para interactuar con el portal de desarrolladores de Apple.
-
-^ poco a poco todos los proyectos han ido migrando del scrapping a medida, a utilizar spaceship como core.
 
 
 ---
@@ -76,18 +51,11 @@ Jorge Maroto García
 
 ![110%](gifs/spaceship-vs-scrapping.gif)
 
-^ aquí se ve una comparativa utilizando sigh, la herramienta del manejo de provisionings de la suite.
-^ arriba mediante el antiguo scrapping, y abajo haciendo uso de spaceship
-
 
 ---
 
 
 ![inline 100%](images/fastlane-logo.png)
-
-^ aunque spaceship es la parte core de fastlane, no es lo habitual interactuar directamente con esta gema, aunque se puede utilizar para aplicaciones de ruby.
-
-^ voy a presentar brevemente las herramientas que componen esta suite y luego iremos viendo su uso en un proyecto real
 
 
 ---
@@ -95,17 +63,11 @@ Jorge Maroto García
 
 ![inline](images/fastlane-ios-utils.png)
 
-^ Por un lado tenemos las herramientas exclusivas para iOS
-
-^ (explicar una a una)
-
 
 ---
 
 
 ![inline 100%](images/fastlane-testflight-utils.png)
-
-^ Otras herramientas relacionadas con la subida a testfligth
 
 
 ---
@@ -113,16 +75,12 @@ Jorge Maroto García
 
 ![inline 100%](images/fastlane-android-utils.png)
 
-^ como decía antes, desde octubre existe el soporte para android. No lo he probado, pero según comenta, equivale a deliver, pero para el Google Play
-
 
 ---
 
 
 #and more ...
 #[fit]https://github.com/fastlane/
-
-^ además de todas estas herramientas "grandes", en el repo de github existen algunas otras utilidades como watchbuild, que avisa de cuando se quita el estado de processing de itunes connect, o el gestor de keychain donde se almacenan passwords y demás
 
 
 ---
@@ -134,19 +92,11 @@ Jorge Maroto García
 
 ![102%](gifs/gem-install-fastlane.gif)
 
-^ para instalarlo, únicamente es hacer un gem install, y como es habitual, esto descargará todas las subherramientas de la suite (que son unas cuantas).
-
-^ dado que fastlane y sus dependencias suele cambiar bastante, es una buena práctica tener un fichero Gemfile e instalar con bundle para que todos en el proyecto estén en las mismas versiones.
-
 
 ---
 
 
 ![](images/fastlane-help.png)
-
-^ como es habitual, podemos ejecutar fastlane help para ver los comandos disponibles. Remarcar que CADA comando, cada acción o cada parámetro están documentados.
-
-^ ahora voy a hacer un proceso completo de ejemplo para ver las opciones de las herramientas
 
 
 ---
@@ -154,14 +104,11 @@ Jorge Maroto García
 
 #[fit]`fastlane init`
 
-^ para empezar, haremos un fastlane init
 
 ---
 
 
 ![fit](images/fastlane-init.png)
-
-^ como véis, nos pregunta varias veces por si queremos configurar alguna herramienta durante el proceso. En un primer momento, con lo básico me servía, así que solo introduje mi correo y el bundle de la app.
 
 
 ---
@@ -169,16 +116,11 @@ Jorge Maroto García
 
 ![150%](images/fastlane-init-tree.png)
 
-^ tras terminar el proceso, tenemos un fichero AppFile, un FastFile y una carpeta vacía de actions
-
 
 ---
 
 
 ![fit](images/appfile.png)
-
-^ el appfile contiene el bundle y el apple id que usaremos para todas las acciones de fastlane.
-^ es posible especificar estos datos cada vez que lancemos las acciones, o incluso utilizar un fichero .env, pero quería un caso muy sencillo y por eso lo puse aquí.
 
 
 ---
@@ -193,17 +135,10 @@ end
 ```
 
 
-^ el otro fichero que se crea es el fastfile, y este es el fichero central que utilizará fastfile.
-
-^ en él se definen las diferentes lanes, que si recordamos de antes, eran el conjunto de pasos a hacer.
-
-
 ---
 
 
 # [fit] DSL
-
-^ El contenido de cada una de las lanes que creemos trata de ser un Domain Specific Language o DSL, es decir, utilizando un metalenguaje sobre Ruby en este caso, expresaremos las acciones que necesitemos.
 
 
 ---
@@ -214,7 +149,6 @@ end
 
 #[fit] `fastlane actions`
 
-^ Ejecutando fastlane actions, veremos un listado de las acciones que hay disponibles
 
 ---
 
@@ -235,9 +169,6 @@ end
 <sub>* last visit 27/11/2015</sub>
 
 
-^ A día de hoy, hay 120 acciones publicadas, y si recordamos al hacer el fastlane init, nos ha creado una carpeta actions, donde podremos meter las acciones particulares de nuestro proyecto.
-
-
 ---
 
 ![fit](images/action-swiftlint.png)
@@ -256,8 +187,6 @@ end
 
 
 ![](images/fastlane_action_crashlytics.png)
-
-^ estos son los parámetros que admite la acción de crashlytics
 
 
 ---
@@ -318,18 +247,13 @@ end
 
 ```
 
-#[fit]https://github.com/patoroco/codemotion2015/blob/master/fastlane/Fastfile
-
-
-^ esto es un fragmento del fastfile que utilizaré para la demo. Se pueden ver dos lanes, con su descripción y acciones en su interior.
+#[fit]https://github.com/patoroco/fastlane-talk/blob/master/fastlane/Fastfile
 
 
 ---
 
 
 ![87%](images/fastlane-lanes.png)
-
-^ Si ejecutamos `fastlane lanes`, se nos mostrará un listado de todas las lanes disponible junto con sus descripciones
 
 
 ---
@@ -343,23 +267,16 @@ end
 
 ![](images/storyboard.png)
 
-^ Esta es la aplicación que utilizaré para el ejemplo. Como se ve, únicamente son dos viewcontrollers unidos.
-
-^ Remarcar también que hay un botón y una etiqueta que están localizadas en inglés, castellano y francés.
-
 
 ---
 
 ![inline 25%](images/produce.png)
 
-^ empecemos creando la app en iTunes Connect
 
 ---
 
 
 ![150%](images/produce-create.png)
-
-^ comando de creación de una app en itunes connect. Pasando parámetros por consola. Como se ve, no pide pass pq estaba ya guardado
 
 
 ---
@@ -367,14 +284,10 @@ end
 
 ![fit](images/produce-create-repeated.png)
 
-^ podríamos intentar crearlo con variables de entorno también. Se ve que no deja
-
 
 ---
 
 ![fit](images/produce-itunes-connect-1.png)
-
-^ si entramos a itunes connect, veremos la app recién creada
 
 
 ---
@@ -382,14 +295,10 @@ end
 
 ![fit](images/produce-itunes-connect-2.png)
 
-^ y esto dentro, con el sku generado para este bundle
-
 
 ---
 
 ![fit](images/produce-enable-services-help.png)
-
-^ produce tiene otras acciones, como activar o desactivar servicios 
 
 
 ---
@@ -402,8 +311,6 @@ end
 
 
 ![93%](images/produce-actions-help.png)
-
-^ produce se puede utilizar también mediante una acción
 
 
 ---
@@ -428,8 +335,6 @@ end
 
 ```
 
-^ tampoco tiene mucho sentido crear una acción para esto pq solo se va a hacer una vez, además, hay que tener cuidado con ello :)
-
 
 ---
 
@@ -437,20 +342,21 @@ end
 ![inline 25%](images/cert.png)
 ![inline 25%](images/pem.png)
 
-^ estas tres utilidades son para manejar los provisionings, actualizar los certificados, o generar los certificados de push de forma automática.
-
-^ es algo que tampoco hago de forma repetitiva, por lo que lo utilizo también por línea de comandos en vez de con una acción
-
 
 ---
+
 
 ![fit](images/pem-use.png)
 
+
 ---
+
 
 ![fit](images/cert-use.png)
 
+
 ---
+
 
 # Fastfile
 
@@ -469,10 +375,12 @@ end
 
 ```
 
+
 ---
 
 
 ![inline 25%](images/gym.png)
+
 
 ---
 
@@ -513,7 +421,6 @@ output_directory "./fastlane/builds"
  
 ```
 
-^ reemplaza a shenzen de @mattt en nomad, con el que haríamos `ipa( configuration: "Crashlytics" )`
 
 ---
 
@@ -583,7 +490,6 @@ func snapshot(name: String, waitForLoadingIndicator: Bool = false)
 
 ```
 
-^ habría que incluir el fichero SwiftHelper.swift, que lo genera fastlane
 
 ---
 
@@ -639,8 +545,6 @@ class codemotion2015UITests: XCTestCase {
 
 ```
 
-^ después en nuestro lado, tenemos que crear un target de test de interfaz con el método snapshot se guardará una captura de pantalla
-
 
 ---
 
@@ -668,7 +572,9 @@ class codemotion2015UITests: XCTestCase {
 
 ![inline 25%](images/frameit.png)
 
+
 ---
+
 
 `$ frameit`
 
@@ -676,28 +582,36 @@ class codemotion2015UITests: XCTestCase {
 
 <sub>https://developer.apple.com/app-store/marketing/guidelines</sub>
 
-^ hay que bajarse las plantillas
 
 ---
+
 
 #[fit] Main window->English->iPhone 6 Plus
 ![inline fit](images/iPhone6Plus-01Main_framed.png)
 
+
 ---
+
 
 #[fit] Second window->Spanish->iPhone 5
 ![inline](images/iPhone5-02Language_framed.png)
 
+
 ---
 
+
 ![fit](images/frameit-after.png)
+
 
 ---
 
 
 ![inline 25%](images/scan.png)
 
+
 ---
+
+
 # Fastfile
 
 ```ruby
@@ -713,12 +627,11 @@ class codemotion2015UITests: XCTestCase {
 
 ```
 
+
 ---
 
 
 ![fit](gifs/fastlane-scan.gif)
-
-^ scan ejecuta los tests
 
 
 ---
@@ -729,22 +642,20 @@ class codemotion2015UITests: XCTestCase {
 
 ---
 
+
 ![fit](images/fastlane-crashlytics.png)
 
-^ lo enseñé al principio, y ahora vamos a verlo en un caso real
-
-^ pasar rápido estas imágenes pq se van a enseñar de verdad en sublime
 
 ---
+
 
 ![fit](images/fastlane-beta.png)
 
 
 ---
 
-#[fit]Demo
 
-^ enseñar el caso de boxoffice con sus archivos
+#[fit]Demo
 
 
 ---
@@ -752,7 +663,9 @@ class codemotion2015UITests: XCTestCase {
 
 ![inline 75%](images/pilot.png)
 
+
 ---
+
 
 # Features
 
@@ -760,41 +673,42 @@ class codemotion2015UITests: XCTestCase {
 - list builds
 - manage test users
 
-^ para subir una build yo uso deliver tal cual
-
 
 ---
+
 
 ![fit](gifs/fastlane-pilot.gif)
 
+
 --- 
+
 
 ![inline 45%](images/boarding.png)
 
-^ crea una web para que los usuarios se subscriban para el test. Aún no la he usado por cómo usamos el testing internamente.
 
 ---
+
 
 # How
 
 ![inline](images/BoardingOverview.png)
 
+
 ---
+
 
 ![110%](gifs/BoardingSetup.gif)
 
-^ este gif que tiene en el repo del proyecto explica cómo funciona
-
 
 ---
+
 
 ![inline 25%](images/supply.png)
 ![inline fit](images/android.png)
 
-^ para android. No lo he usado aún
-
 
 ---
+
 
 # Links
 
@@ -808,6 +722,7 @@ class codemotion2015UITests: XCTestCase {
 
 ---
 
+
 ![right 126%](http://media.tumblr.com/tumblr_lnm1g25WsB1qdq5u6.gif)
 
 
@@ -820,4 +735,4 @@ _@patoroco_
 
 --
 
-#[fit] github.com/patoroco/codemotion2015
+#[fit] github.com/patoroco/fastlane-talk
