@@ -7,11 +7,11 @@
 
 ## CI
 
-- CircleCI ![circle-badge](https://circleci.com/gh/patoroco/fastlane-talk.png?circle-token=16f26870b1ed2bf5175f3461731f3d9116310602) [link](https://circleci.com/gh/patoroco/fastlane-talk)
+- CircleCI [![circle-badge](https://circleci.com/gh/patoroco/fastlane-talk.png?circle-token=16f26870b1ed2bf5175f3461731f3d9116310602)](https://circleci.com/gh/patoroco/fastlane-talk)
 
-- Travis ![travis-badge](https://travis-ci.org/patoroco/fastlane-talk.svg) [link](https://travis-ci.org/patoroco/fastlane-talk)
+- Travis [![travis-badge](https://travis-ci.org/patoroco/fastlane-talk.svg)](https://travis-ci.org/patoroco/fastlane-talk)
 
 
 ## Talk Links
 - [Fastfile](fastlane/Fastfile)
-- [PDF presentation](raw/master/deckset_presentation/20151127-fastlane-talk.pdf)
+- [PDF presentation](https://github.com/patoroco/fastlane-talk/raw/master/deckset_presentation/20151127-fastlane-talk.pdf)
