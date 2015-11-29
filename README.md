@@ -14,3 +14,4 @@
 
 ## Talk Links
 - [Fastfile](fastlane/Fastfile)
+- [PDF presentation](raw/master/deckset_presentation/20151127-fastlane-talk.pdf)
